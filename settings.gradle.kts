@@ -1,1 +1,1 @@
-rootProject.name = "tag-wizard"
+rootProject.name = "tagKreator"
