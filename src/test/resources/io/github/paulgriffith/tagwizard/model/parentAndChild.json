@@ -1,0 +1,62 @@
+{
+    "name": "_types_",
+    "tagType": "Folder",
+    "tags": [
+        {
+            "typeColor": -65536,
+            "name": "Parent",
+            "typeId": "",
+            "parameters": {
+                "floatParam": {
+                    "dataType": "Float",
+                    "value": 3.14
+                },
+                "intParam": {
+                    "dataType": "Integer",
+                    "value": 123
+                },
+                "stringParam": {
+                    "dataType": "String",
+                    "value": "abc"
+                }
+            },
+            "tagType": "UdtType",
+            "tags": [
+                {
+                    "name": "Folder",
+                    "tagType": "Folder",
+                    "tags": [
+                        {
+                            "valueSource": "memory",
+                            "name": "parentMemory",
+                            "tagType": "AtomicTag"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Child",
+            "typeId": "Parent",
+            "tagType": "UdtType",
+            "tags": [
+                {
+                    "valueSource": "memory",
+                    "name": "ChildMemory",
+                    "value": 111,
+                    "tagType": "AtomicTag"
+                },
+                {
+                    "name": "Folder",
+                    "tagType": "Folder",
+                    "tags": [
+                        {
+                            "name": "parentMemory",
+                            "tagType": "AtomicTag"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

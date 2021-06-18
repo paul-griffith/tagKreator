@@ -1,0 +1,81 @@
+{
+    "name": "history",
+    "tagType": "Folder",
+    "tags": [
+        {
+            "valueSource": "opc",
+            "opcItemPath": "ns=1;s=[GenSim]_Meta:Sine/Sine2",
+            "dataType": "Float8",
+            "historyProvider": "internalHistorian",
+            "historicalDeadband": 0.0,
+            "name": "Sine2",
+            "historyEnabled": true,
+            "tagType": "AtomicTag",
+            "opcServer": "Ignition OPC UA Server"
+        },
+        {
+            "valueSource": "opc",
+            "opcItemPath": "ns=1;s=[GenSim]_Meta:Sine/Sine8",
+            "dataType": "Float8",
+            "historyProvider": "internalHistorian",
+            "historicalDeadband": 0.0,
+            "name": "Sine8",
+            "historyEnabled": true,
+            "tagType": "AtomicTag",
+            "opcServer": "Ignition OPC UA Server"
+        },
+        {
+            "valueSource": "opc",
+            "historyMaxAge": 123,
+            "opcItemPath": "ns=1;s=[GenSim]_Meta:Sine/Sine0",
+            "historicalDeadband": 123.0,
+            "historicalDeadbandMode": "Percent",
+            "writePermissions": {
+                "type": "AllOf",
+                "securityLevels": [
+                    {
+                        "name": "SecurityZones",
+                        "children": []
+                    }
+                ]
+            },
+            "historicalDeadbandStyle": "Analog_Compressed",
+            "documentation": "documentation",
+            "tooltip": "tooltip",
+            "historySampleRateUnits": "WEEK",
+            "tagType": "AtomicTag",
+            "eventScripts": [
+                {
+                    "eventid": "qualityChanged",
+                    "script": "\t#qualityChanged"
+                },
+                {
+                    "eventid": "valueChanged",
+                    "script": "\t#valueChanged"
+                },
+                {
+                    "eventid": "alarmActive",
+                    "script": "\t#alarmActive"
+                }
+            ],
+            "readOnly": false,
+            "dataType": "Float4",
+            "historyProvider": "internalHistorian",
+            "historyMaxAgeUnits": "MIN",
+            "name": "Sine0",
+            "historyEnabled": true,
+            "readPermissions": {
+                "type": "AnyOf",
+                "securityLevels": [
+                    {
+                        "name": "Authenticated",
+                        "children": []
+                    }
+                ]
+            },
+            "sampleMode": "Periodic",
+            "historySampleRate": 222,
+            "opcServer": "Ignition OPC UA Server"
+        }
+    ]
+}
