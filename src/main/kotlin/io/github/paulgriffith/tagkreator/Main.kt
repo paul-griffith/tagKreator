@@ -1,7 +1,7 @@
 package io.github.paulgriffith.tagkreator
 
 import io.github.paulgriffith.tagkreator.dsl.FolderBuilder
-import io.github.paulgriffith.tagkreator.dsl.TagExportBuilder.Companion.tags
+import io.github.paulgriffith.tagkreator.dsl.ProviderBuilder.Companion.provider
 import io.github.paulgriffith.tagkreator.dsl.TypeId
 import io.github.paulgriffith.tagkreator.json.TAG_JSON
 import io.github.paulgriffith.tagkreator.model.AtomicTag.HistoricalDeadbandMode.Absolute
@@ -15,8 +15,8 @@ import kotlinx.serialization.json.put
 import kotlin.time.Duration
 
 fun main() {
-    // Define a variable tags, which will be the result of calling the function `tags` - the 'root' of the Tag DSL
-    val tags = tags {
+    // Define a variable tags, which will be the result of calling the function `provider` - the 'root' of the Tag DSL
+    val tags = provider {
         // If within IntelliJ, you'll notice `this` called out as `TagExportBuilder` within this scope.
         // That's the key to how the DSL works - increasingly nested scopes providing helper functions.
         // Diving down again, we open a new scope to construct our UDT definitions.

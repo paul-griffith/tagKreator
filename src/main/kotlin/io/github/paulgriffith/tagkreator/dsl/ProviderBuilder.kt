@@ -1,11 +1,11 @@
 package io.github.paulgriffith.tagkreator.dsl
 
 import io.github.paulgriffith.tagkreator.model.Folder
-import io.github.paulgriffith.tagkreator.model.Tag
+import io.github.paulgriffith.tagkreator.model.Provider
 import io.github.paulgriffith.tagkreator.model.UDTInstance
 
 @TagDslMarker
-class TagExportBuilder : AbstractFolderBuilder() {
+class ProviderBuilder : AbstractFolderBuilder() {
     @TagDslMarker
     fun types(block: TypesBuilder.() -> Unit) {
         tags += Folder(
@@ -46,8 +46,11 @@ class TagExportBuilder : AbstractFolderBuilder() {
 
     companion object {
         @TagDslMarker
-        fun tags(block: TagExportBuilder.() -> Unit): List<Tag> {
-            return TagExportBuilder().apply(block).tags
+        fun provider(block: ProviderBuilder.() -> Unit): Provider {
+            return Provider(
+                name = "",
+                tags = ProviderBuilder().apply(block).tags
+            )
         }
     }
 }

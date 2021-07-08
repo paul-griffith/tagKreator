@@ -3,7 +3,7 @@ package io.github.paulgriffith.tagkreator.dsl
 import io.github.paulgriffith.tagkreator.model.AtomicTag.Permissions
 
 @TagDslMarker
-class PermissionsBuilder(val type: Permissions.Type) {
+class PermissionsBuilder(var type: Permissions.Type) {
     private val levels: MutableList<Permissions.SecurityLevel> = mutableListOf()
 
     @TagDslMarker

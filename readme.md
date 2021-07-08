@@ -16,9 +16,14 @@ For now, as an entirely half-baked project, the only way to use this library is 
 IDE (IntelliJ is strongly recommended), and modifying a source
 file. [`Main.kt`](src/main/kotlin/io/github/paulgriffith/tagkreator/Main.kt) is the recommended starting point, and also
 serves as a contextual example. Once changed, you can either directly run the `main` method using IntelliJ's helpful
-builtin, or at the command line via `./gradlew run`. 
+builtin, or build a 'distribution' (`./gradlew run installDist` and then run it (`./build/install/tagKreator/bin/tagKreator`)) 
+
+Just like Ignition 8, Java 11 is required, though higher Java
+versions should work just fine.
 
 ## Disclaimer
 
 This is a personal project - not an official product of Inductive Automation. As the license mentions, this is provided
-with _zero_ guarantees about functionality, support, future maintenance, etc. Use at your own risk. 
+with _zero_ guarantees about functionality, support, future maintenance, etc. 
+
+# **Use at your own risk.**
