@@ -1,7 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    val kotlinVersion = "1.5.10"
+    application
+
+    val kotlinVersion = "1.5.20"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.serialization") version kotlinVersion
 
@@ -25,6 +27,10 @@ dependencies {
     testImplementation("io.kotest", "kotest-property-jvm", kotestVersion)
 }
 
+application {
+    mainClass.set("io.github.paulgriffith.tagkreator.MainKt")
+}
+
 tasks {
     test {
         useJUnitPlatform()
@@ -34,7 +40,8 @@ tasks {
         kotlinOptions {
             jvmTarget = "11"
             freeCompilerArgs = listOf(
-                "-Xopt-in=kotlin.RequiresOptIn"
+                "-Xopt-in=kotlin.RequiresOptIn",
+                "-Xopt-in=kotlin.time.ExperimentalTime",
             )
         }
     }
