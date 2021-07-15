@@ -1,6 +1,6 @@
 package io.github.paulgriffith.tagkreator.dsl
 
-import io.github.paulgriffith.tagkreator.model.UDTDef.Parameter
+import io.github.paulgriffith.tagkreator.model.UdtDef.Parameter
 import kotlinx.serialization.json.JsonPrimitive
 
 class ParametersBuilder {

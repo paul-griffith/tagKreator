@@ -3,23 +3,24 @@ package io.github.paulgriffith.tagkreator.model
 import io.github.paulgriffith.tagkreator.json.ColorSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonPrimitive
 import java.awt.Color
 
 @Serializable
 @SerialName("UdtType")
-data class UDTDef(
+data class UdtDef(
     override val name: String,
-    val tags: List<Tag> = emptyList(),
+    override val tags: List<Tag> = emptyList(),
     @SerialName("typeId")
     val parentTypeId: String? = "",
     val parameters: Map<String, Parameter> = emptyMap(),
     @Serializable(with = ColorSerializer::class) val typeColor: Color? = null,
-) : Tag() {
+) : Tag(), TagContainer {
 
     @Serializable
     data class Parameter(
-        val value: JsonPrimitive,
+        val value: JsonPrimitive = JsonNull,
         val dataType: Type,
     ) {
         enum class Type {

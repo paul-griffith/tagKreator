@@ -6,6 +6,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 @SerialName("Provider")
 data class Provider(
-    val name: String,
-    val tags: List<Tag> = emptyList()
-)
+    override val name: String,
+    override val tags: List<Tag> = emptyList()
+) : Tag(), TagContainer

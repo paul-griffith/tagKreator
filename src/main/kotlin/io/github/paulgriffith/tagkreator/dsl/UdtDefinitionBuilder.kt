@@ -1,7 +1,7 @@
 package io.github.paulgriffith.tagkreator.dsl
 
 import io.github.paulgriffith.tagkreator.model.Folder
-import io.github.paulgriffith.tagkreator.model.UDTDef
+import io.github.paulgriffith.tagkreator.model.UdtDef
 import kotlinx.serialization.json.double
 import kotlinx.serialization.json.float
 import kotlinx.serialization.json.int
@@ -12,7 +12,7 @@ import kotlin.reflect.KProperty
 @TagDslMarker
 class UdtDefinitionBuilder : AbstractFolderBuilder() {
     var parentId: TypeId? = null
-    var params: MutableMap<String, UDTDef.Parameter> = linkedMapOf()
+    var params: MutableMap<String, UdtDef.Parameter> = linkedMapOf()
     var typeColor: Color? = null
 
     @TagDslMarker
@@ -20,7 +20,7 @@ class UdtDefinitionBuilder : AbstractFolderBuilder() {
         params = ParametersBuilder().apply(block).parameters
     }
 
-    inline operator fun <reified T> MutableMap<String, UDTDef.Parameter>.getValue(
+    inline operator fun <reified T> MutableMap<String, UdtDef.Parameter>.getValue(
         thisRef: Any?,
         property: KProperty<*>,
     ): T {
@@ -43,8 +43,8 @@ class UdtDefinitionBuilder : AbstractFolderBuilder() {
         )
     }
 
-    fun build(name: String): UDTDef {
-        return UDTDef(
+    fun build(name: String): UdtDef {
+        return UdtDef(
             name = name,
             tags = tags,
             parentTypeId = parentId?.id.orEmpty(),

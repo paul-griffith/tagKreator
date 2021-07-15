@@ -42,6 +42,8 @@ sealed class TagBuilder<T>(
         name = name,
         valueSource = valueSource,
         dataType = type,
+        tooltip = tooltip,
+        documentation = documentation,
     )
 
     fun build(): AtomicTag {

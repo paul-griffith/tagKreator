@@ -21,6 +21,11 @@ dependencies {
     implementation("org.jetbrains.kotlinx", "kotlinx-serialization-json", "1.2.1")
     implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.5.0")
 
+    implementation("com.formdev", "flatlaf", "1.4")
+    implementation("com.formdev", "flatlaf-extras", "1.4")
+    implementation("com.formdev", "svgSalamander", "1.1.2.4")
+    implementation("com.miglayout", "miglayout-swing", "11.0")
+
     val kotestVersion = "4.6.0"
     testImplementation("io.kotest", "kotest-runner-junit5-jvm", kotestVersion)
     testImplementation("io.kotest", "kotest-assertions-core-jvm", kotestVersion)

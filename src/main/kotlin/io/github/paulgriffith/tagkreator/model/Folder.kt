@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @SerialName("Folder")
 data class Folder(
     override val name: String,
-    val tags: List<Tag> = emptyList(),
-) : Tag()
+    override val tags: List<Tag> = emptyList(),
+) : Tag(), TagContainer

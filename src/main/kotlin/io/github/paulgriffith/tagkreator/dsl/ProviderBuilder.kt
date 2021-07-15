@@ -2,7 +2,7 @@ package io.github.paulgriffith.tagkreator.dsl
 
 import io.github.paulgriffith.tagkreator.model.Folder
 import io.github.paulgriffith.tagkreator.model.Provider
-import io.github.paulgriffith.tagkreator.model.UDTInstance
+import io.github.paulgriffith.tagkreator.model.UdtInstance
 
 @TagDslMarker
 class ProviderBuilder : AbstractFolderBuilder() {
@@ -36,7 +36,7 @@ class ProviderBuilder : AbstractFolderBuilder() {
     @TagDslMarker
     fun udtInstance(typeId: TypeId, name: String, overrides: UdtDefinitionBuilder.() -> Unit = {}) {
         val override = UdtDefinitionBuilder().apply(overrides)
-        tags += UDTInstance(
+        tags += UdtInstance(
             name = name,
             typeId = typeId.id,
             parameters = override.params,

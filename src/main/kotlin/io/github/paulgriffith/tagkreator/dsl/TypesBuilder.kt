@@ -2,7 +2,7 @@ package io.github.paulgriffith.tagkreator.dsl
 
 import io.github.paulgriffith.tagkreator.model.Folder
 import io.github.paulgriffith.tagkreator.model.Tag
-import io.github.paulgriffith.tagkreator.model.UDTDef
+import io.github.paulgriffith.tagkreator.model.UdtDef
 
 @TagDslMarker
 class TypesBuilder(private val path: String) {
@@ -19,7 +19,7 @@ class TypesBuilder(private val path: String) {
     @TagDslMarker
     fun udt(name: String, block: UdtDefinitionBuilder.() -> Unit = {}): TypeId {
         val udt = UdtDefinitionBuilder().apply(block)
-        tags += UDTDef(
+        tags += UdtDef(
             name = name,
             parameters = udt.params,
             tags = udt.tags,

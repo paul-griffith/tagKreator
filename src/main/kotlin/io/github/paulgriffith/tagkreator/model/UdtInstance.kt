@@ -5,9 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @SerialName("UdtInstance")
-data class UDTInstance(
+data class UdtInstance(
     override val name: String,
     val typeId: String,
-    val parameters: Map<String, UDTDef.Parameter>? = null,
-    val tags: List<Tag>? = null,
-) : Tag()
+    val parameters: Map<String, UdtDef.Parameter>? = null,
+    override val tags: List<Tag>? = null,
+) : Tag(), TagContainer

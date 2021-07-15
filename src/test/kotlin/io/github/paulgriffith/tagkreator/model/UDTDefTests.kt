@@ -13,17 +13,17 @@ import java.awt.Color
 @DisplayName("UDT Definition Tests")
 class UDTDefTests : FunSpec({
     test("Basic UDT definition") {
-        UDTDef(
+        UdtDef(
             name = "abc",
             parentTypeId = "parent",
             parameters = mapOf(
-                "number" to UDTDef.Parameter(
+                "number" to UdtDef.Parameter(
                     value = JsonPrimitive(123),
-                    dataType = UDTDef.Parameter.Type.Integer,
+                    dataType = UdtDef.Parameter.Type.Integer,
                 ),
-                "string" to UDTDef.Parameter(
+                "string" to UdtDef.Parameter(
                     value = JsonPrimitive("str"),
-                    dataType = UDTDef.Parameter.Type.String,
+                    dataType = UdtDef.Parameter.Type.String,
                 )
             ),
             tags = listOf(
