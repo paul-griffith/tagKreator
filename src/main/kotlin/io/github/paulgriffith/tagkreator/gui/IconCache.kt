@@ -18,16 +18,17 @@ object IconCache {
         }
     }
 
-    val TAG by cache()
+    val CLOCK by cache()
+    val CODE by cache()
+    val COLLAPSE by cache("minimize-2")
+    val COPY by cache()
+    val CPU by cache()
+    val DATABASE by cache()
+    val EXPAND by cache("maximize-2")
+    val EXTERNAL_LINK by cache()
     val FILE by cache()
     val FOLDER by cache()
-    val CPU by cache()
-    val CODE by cache()
-    val COPY by cache()
-    val CLOCK by cache()
-    val DATABASE by cache()
-    val NODE: FlatSVGIcon by cache("square") { it.derive(0.8F) }
-    val EXPAND: FlatSVGIcon by cache("maximize-2")
-    val COLLAPSE: FlatSVGIcon by cache("minimize-2")
-    val EXTERNAL_LINK: FlatSVGIcon by cache()
+    val NODE by cache("square") { it.derive(0.8F) }
+    val SAVE by cache()
+    val TAG by cache()
 }

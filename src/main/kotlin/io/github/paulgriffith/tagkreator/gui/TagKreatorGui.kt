@@ -8,6 +8,7 @@ import java.io.File
 import javax.swing.AbstractAction
 import javax.swing.Action
 import javax.swing.Icon
+import javax.swing.JFileChooser
 import javax.swing.JFrame
 import javax.swing.WindowConstants
 import javax.swing.filechooser.FileFilter
@@ -49,9 +50,14 @@ fun main() {
     }
 }
 
-internal val JSON_FILE_FILTER = object : FileFilter() {
-    override fun accept(f: File): Boolean = f.extension.lowercase() == "json"
-    override fun getDescription(): String = "Tag Export(s) [.json]"
+// Lazy so that it's not initialized before the LaF is set up
+val TAG_FILE_CHOOSER by lazy {
+    JFileChooser().apply {
+        fileFilter = object : FileFilter() {
+            override fun accept(f: File): Boolean = f.extension.lowercase() == "json"
+            override fun getDescription(): String = "Tag Export(s) [.json]"
+        }
+    }
 }
 
 fun action(

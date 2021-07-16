@@ -10,18 +10,13 @@ import javax.swing.JFileChooser
 import javax.swing.JPanel
 
 class OpenTab : JPanel(MigLayout()) {
-    val fileChooser = JFileChooser().apply {
-        isMultiSelectionEnabled = true
-        fileFilter = JSON_FILE_FILTER
-    }
-
     init {
         add(
             JButton(object : AbstractAction("Open") {
                 override fun actionPerformed(e: ActionEvent) {
-                    val ret = fileChooser.showOpenDialog(this@OpenTab)
+                    val ret = TAG_FILE_CHOOSER.showOpenDialog(this@OpenTab)
                     if (ret == JFileChooser.APPROVE_OPTION) {
-                        fileChooser.selectedFiles.map {
+                        TAG_FILE_CHOOSER.selectedFiles.map {
                             TAG_JSON.decodeFromString(Tag.serializer(), it.readText())
                         }.forEach { tag ->
                             println(tag)
