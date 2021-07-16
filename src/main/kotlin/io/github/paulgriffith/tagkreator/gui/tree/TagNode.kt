@@ -10,20 +10,23 @@ import io.github.paulgriffith.tagkreator.model.UdtInstance
 import javax.swing.Icon
 
 sealed class TagNode(override val parent: TagNode?) : Node() {
-    protected fun node(text: String, icon: Icon? = IconCache.NODE): SimpleValueNode = SimpleValueNode(text, icon, this)
+    abstract val tag: Tag
+
+    protected fun MutableList<Node>.node(field: String, value: Any?, icon: Icon? = IconCache.NODE) {
+        if (value != null) {
+            add(SimpleValueNode(text = "$field: $value", icon = icon, parent = this@TagNode))
+        }
+    }
 
     companion object {
         fun Tag.buildTreeNode(parent: TagNode? = null): TagNode {
             return when (this) {
-                is AtomicTag -> when (valueSource) {
-                    AtomicTag.ValueSource.Memory -> MemoryTagNode(this, parent)
-                    AtomicTag.ValueSource.Expression -> ExpressionTagNode(this, parent)
-                    AtomicTag.ValueSource.OPC -> OPCTagNode(this, parent)
-                    AtomicTag.ValueSource.Query -> TODO()
-                    AtomicTag.ValueSource.Derived -> TODO()
-                    AtomicTag.ValueSource.Reference -> TODO()
+                is AtomicTag -> AtomicTagNode(this, parent)
+                is Folder -> if (this.name == Tag.TYPES_FOLDER_NAME) {
+                    TypesNode(this, parent)
+                } else {
+                    FolderNode(this, parent)
                 }
-                is Folder -> FolderNode(this, parent)
                 is Provider -> ProviderNode(this, parent)
                 is UdtDef -> UdtDefinitionNode(this, parent)
                 is UdtInstance -> UdtInstanceNode(this, parent)

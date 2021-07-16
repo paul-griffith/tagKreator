@@ -11,4 +11,8 @@ sealed class Tag {
     fun toJson(): JsonElement {
         return TAG_JSON.encodeToJsonElement(serializer(), this)
     }
+
+    companion object {
+        const val TYPES_FOLDER_NAME = "_types_"
+    }
 }

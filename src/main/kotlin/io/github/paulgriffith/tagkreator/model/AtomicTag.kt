@@ -12,6 +12,7 @@ data class AtomicTag(
     val valueSource: ValueSource = ValueSource.Memory,
     val value: JsonElement = JsonNull,
     val dataType: DataType = DataType.Int4,
+    val tagGroup: String? = null,
     // expression (technically, expression should be JsonPrimitive, but numeric literals are uncommon)
     val expression: String? = null,
     val executionMode: TagExecutionMode? = TagExecutionMode.TagGroupRate,
@@ -61,6 +62,7 @@ data class AtomicTag(
     val historicalDeadband: Double? = null,
     val historicalDeadbandMode: HistoricalDeadbandMode? = null,
     val historicalDeadbandStyle: HistoricalDeadbandStyle? = null,
+    val historyTagGroup: String? = null,
     val historyMaxAge: Long? = null,
     val historyMaxAgeUnits: TimeUnits? = null,
     val historySampleRate: Long? = null,

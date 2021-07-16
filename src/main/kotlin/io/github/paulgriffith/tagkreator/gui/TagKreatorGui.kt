@@ -2,14 +2,13 @@ package io.github.paulgriffith.tagkreator.gui
 
 import com.formdev.flatlaf.FlatDarculaLaf
 import com.formdev.flatlaf.extras.components.FlatTabbedPane
-import com.formdev.flatlaf.extras.components.FlatTriStateCheckBox
 import io.github.paulgriffith.tagkreator.gui.tree.TreeTab
-import net.miginfocom.swing.MigLayout
+import java.awt.event.ActionEvent
 import java.io.File
-import javax.swing.JCheckBox
+import javax.swing.AbstractAction
+import javax.swing.Action
+import javax.swing.Icon
 import javax.swing.JFrame
-import javax.swing.JPanel
-import javax.swing.JTextField
 import javax.swing.WindowConstants
 import javax.swing.filechooser.FileFilter
 
@@ -25,32 +24,46 @@ class TagKreatorGui : JFrame("TagKreator") {
                 TreeTab(),
                 "Select a file to view it in a tree",
             )
-            addTab(
-                "Open",
-                null,
-                OpenTab(),
-                "Select multiple files to open and verify",
-            )
-            addTab(
-                "LaF Testing",
-                JPanel(MigLayout()).apply {
-                    add(FlatTriStateCheckBox("tristate"))
-                    add(JCheckBox("checkbox"))
-                    add(JTextField())
-                }
-            )
+//            addTab(
+//                "Open",
+//                null,
+//                OpenTab(),
+//                "Select multiple files to open and verify",
+//            )
+//            addTab(
+//                "LaF Testing",
+//                JPanel(MigLayout()).apply {
+//                    add(FlatTriStateCheckBox("tristate"))
+//                    add(JCheckBox("checkbox"))
+//                    add(JTextField())
+//                }
+//            )
         }
     }
 }
 
 fun main() {
     FlatDarculaLaf.setup()
-    TagKreatorGui().also { gui ->
-        gui.isVisible = true
+    TagKreatorGui().apply {
+        isVisible = true
     }
 }
 
 internal val JSON_FILE_FILTER = object : FileFilter() {
     override fun accept(f: File): Boolean = f.extension.lowercase() == "json"
     override fun getDescription(): String = "Tag Export(s) [.json]"
+}
+
+fun action(
+    name: String? = null,
+    icon: Icon? = null,
+    tooltip: String? = null,
+    actionPerformed: (event: ActionEvent) -> Unit,
+): AbstractAction = object : AbstractAction(name) {
+    init {
+        putValue(Action.SMALL_ICON, icon)
+        putValue(Action.SHORT_DESCRIPTION, tooltip)
+    }
+
+    override fun actionPerformed(e: ActionEvent) = actionPerformed(e)
 }
